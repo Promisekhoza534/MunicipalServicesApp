@@ -102,6 +102,9 @@ namespace MunicipalServicesApp
 
             priorityEventQueue.Enqueue(
                 eventsByCategory["Business"][0], 3);
+
+
+            ProcessPriorityEvents();
         }
 
 
@@ -179,6 +182,7 @@ namespace MunicipalServicesApp
             if (totalSearches >= 2)
             {
                 ShowRecommendations();
+
             }
             else
             {
@@ -188,6 +192,17 @@ namespace MunicipalServicesApp
             }
         }
 
+
+        private void ProcessPriorityEvents()
+        {
+            while (priorityEventQueue.Count > 0)
+            {
+                EventItem priorityEvent = priorityEventQueue.Dequeue();
+
+                System.Diagnostics.Debug.WriteLine(
+                    "Priority event: " + priorityEvent.Title);
+            }
+        }
 
 
         private void ShowRecommendations()

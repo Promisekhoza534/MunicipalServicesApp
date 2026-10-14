@@ -42,7 +42,7 @@
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Location = new System.Drawing.Point(96, 40);
+            this.lblTitle.Location = new System.Drawing.Point(270, 41);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(209, 16);
             this.lblTitle.TabIndex = 0;
@@ -60,9 +60,9 @@
             // cmbCategory
             // 
             this.cmbCategory.FormattingEnabled = true;
-            this.cmbCategory.Location = new System.Drawing.Point(184, 106);
+            this.cmbCategory.Location = new System.Drawing.Point(139, 106);
             this.cmbCategory.Name = "cmbCategory";
-            this.cmbCategory.Size = new System.Drawing.Size(121, 24);
+            this.cmbCategory.Size = new System.Drawing.Size(198, 24);
             this.cmbCategory.TabIndex = 2;
             // 
             // label2
@@ -76,16 +76,16 @@
             // 
             // dtpEventDate
             // 
-            this.dtpEventDate.Location = new System.Drawing.Point(418, 106);
+            this.dtpEventDate.Location = new System.Drawing.Point(405, 106);
             this.dtpEventDate.Name = "dtpEventDate";
-            this.dtpEventDate.Size = new System.Drawing.Size(231, 22);
+            this.dtpEventDate.Size = new System.Drawing.Size(258, 22);
             this.dtpEventDate.TabIndex = 4;
             // 
             // btnSearch
             // 
             this.btnSearch.Location = new System.Drawing.Point(679, 103);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(94, 23);
+            this.btnSearch.Size = new System.Drawing.Size(109, 23);
             this.btnSearch.TabIndex = 5;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -97,13 +97,13 @@
             this.lstEvents.ItemHeight = 16;
             this.lstEvents.Location = new System.Drawing.Point(74, 165);
             this.lstEvents.Name = "lstEvents";
-            this.lstEvents.Size = new System.Drawing.Size(361, 84);
+            this.lstEvents.Size = new System.Drawing.Size(699, 84);
             this.lstEvents.TabIndex = 6;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(71, 313);
+            this.label3.Location = new System.Drawing.Point(71, 295);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(145, 16);
             this.label3.TabIndex = 7;
@@ -113,9 +113,9 @@
             // 
             this.lstRecommendations.FormattingEnabled = true;
             this.lstRecommendations.ItemHeight = 16;
-            this.lstRecommendations.Location = new System.Drawing.Point(74, 354);
+            this.lstRecommendations.Location = new System.Drawing.Point(74, 335);
             this.lstRecommendations.Name = "lstRecommendations";
-            this.lstRecommendations.Size = new System.Drawing.Size(309, 84);
+            this.lstRecommendations.Size = new System.Drawing.Size(699, 84);
             this.lstRecommendations.TabIndex = 8;
             // 
             // LocalEventsForm
