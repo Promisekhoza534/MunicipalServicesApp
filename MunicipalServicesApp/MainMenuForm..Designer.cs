@@ -46,13 +46,13 @@
             // 
             // btnLocalEvents
             // 
-            this.btnLocalEvents.Enabled = false;
             this.btnLocalEvents.Location = new System.Drawing.Point(382, 223);
             this.btnLocalEvents.Name = "btnLocalEvents";
             this.btnLocalEvents.Size = new System.Drawing.Size(256, 23);
             this.btnLocalEvents.TabIndex = 1;
             this.btnLocalEvents.Text = "Local Events and Announcements";
             this.btnLocalEvents.UseVisualStyleBackColor = true;
+            this.btnLocalEvents.Click += new System.EventHandler(this.btnLocalEvents_Click);
             // 
             // btnServiceStatus
             // 

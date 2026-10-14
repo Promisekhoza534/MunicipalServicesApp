@@ -164,6 +164,11 @@ namespace MunicipalServicesApp
         {
             UpdateProgress();
         }
+
+        private void ReportIssuesForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
     }
     

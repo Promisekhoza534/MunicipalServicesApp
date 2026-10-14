@@ -198,6 +198,7 @@
             this.Name = "ReportIssuesForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Report an Issue";
+            this.Load += new System.EventHandler(this.ReportIssuesForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

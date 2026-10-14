@@ -46,13 +46,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EventItem.cs" />
     <Compile Include="Issue.cs" />
+    <Compile Include="LocalEventsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LocalEventsForm.Designer.cs">
+      <DependentUpon>LocalEventsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainMenuForm..cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainMenuForm..Designer.cs">
       <DependentUpon>MainMenuForm..cs</DependentUpon>
     </Compile>
+    <Compile Include="PriorityEventQueue.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReportIssuesForm.cs">
@@ -61,6 +69,9 @@
     <Compile Include="ReportIssuesForm.Designer.cs">
       <DependentUpon>ReportIssuesForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="LocalEventsForm.resx">
+      <DependentUpon>LocalEventsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainMenuForm..resx">
       <DependentUpon>MainMenuForm..cs</DependentUpon>
     </EmbeddedResource>
