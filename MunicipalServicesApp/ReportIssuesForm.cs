@@ -169,6 +169,11 @@ namespace MunicipalServicesApp
         {
 
         }
+
+        private void progressReport_Click(object sender, EventArgs e)
+        {
+
+        }
     }
     }
     

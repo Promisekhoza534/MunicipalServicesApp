@@ -7,6 +7,7 @@ namespace MunicipalServicesApp
 {
     public partial class LocalEventsForm : Form
     {
+        // Data structures used to organise events
         private SortedDictionary<DateTime, List<EventItem>> eventsByDate =
             new SortedDictionary<DateTime, List<EventItem>>();
 
@@ -25,10 +26,12 @@ namespace MunicipalServicesApp
         private PriorityEventQueue priorityEventQueue =
             new PriorityEventQueue();
 
+        // Stores the categories searched by the user
         private Dictionary<string, int> searchPreferences =
             new Dictionary<string, int>();
 
         private int totalSearches = 0;
+
         private EventItem mostRecentlyFoundEvent = null;
 
         public LocalEventsForm()
@@ -36,6 +39,7 @@ namespace MunicipalServicesApp
             InitializeComponent();
         }
 
+        // Load sample events when the form opens
         private void LocalEventsForm_Load(object sender, EventArgs e)
         {
             AddEvent(new EventItem(
@@ -73,6 +77,7 @@ namespace MunicipalServicesApp
                 new DateTime(2026, 11, 8),
                 "Local Community Hall"));
 
+            // Populate category dropdown
             cmbCategory.Items.Clear();
             cmbCategory.Items.Add("All Categories");
 
@@ -83,8 +88,10 @@ namespace MunicipalServicesApp
 
             cmbCategory.SelectedIndex = 0;
 
+            // Display all available sample events
             DisplayAllEvents();
 
+            // Populate queue and stack
             foreach (KeyValuePair<DateTime, List<EventItem>> entry in eventsByDate)
             {
                 foreach (EventItem eventItem in entry.Value)
@@ -94,6 +101,7 @@ namespace MunicipalServicesApp
                 }
             }
 
+            // Add selected events to the priority queue
             priorityEventQueue.Enqueue(
                 eventsByCategory["Community"][0], 1);
 
@@ -103,12 +111,15 @@ namespace MunicipalServicesApp
             priorityEventQueue.Enqueue(
                 eventsByCategory["Business"][0], 3);
 
-
             ProcessPriorityEvents();
+
+            // Initial recommendation message
+            lstRecommendations.Items.Clear();
+            lstRecommendations.Items.Add(
+                "Search for events to receive recommendations.");
         }
 
-
-
+        // Search events by selected category and date
         private void SearchEvents()
         {
             lstEvents.Items.Clear();
@@ -116,11 +127,16 @@ namespace MunicipalServicesApp
             recentEvents.Clear();
             eventQueue.Clear();
 
-            string selectedCategory = cmbCategory.SelectedItem.ToString();
+            string selectedCategory =
+                cmbCategory.SelectedItem == null
+                ? "All Categories"
+                : cmbCategory.SelectedItem.ToString();
+
             DateTime selectedDate = dtpEventDate.Value.Date;
 
             totalSearches++;
 
+            // Record the user's category preference
             if (selectedCategory != "All Categories")
             {
                 if (!searchPreferences.ContainsKey(selectedCategory))
@@ -133,6 +149,7 @@ namespace MunicipalServicesApp
                 }
             }
 
+            // Find matching events
             foreach (KeyValuePair<DateTime, List<EventItem>> entry in eventsByDate)
             {
                 foreach (EventItem eventItem in entry.Value)
@@ -152,14 +169,14 @@ namespace MunicipalServicesApp
                 }
             }
 
-       
+            // Display matching events using the queue
             while (eventQueue.Count > 0)
             {
                 EventItem nextEvent = eventQueue.Dequeue();
                 lstEvents.Items.Add(nextEvent);
             }
 
-
+            // Record the most recently found event
             if (recentEvents.Count > 0)
             {
                 mostRecentlyFoundEvent = recentEvents.Pop();
@@ -173,38 +190,41 @@ namespace MunicipalServicesApp
                 mostRecentlyFoundEvent = null;
             }
 
+            // Display message if no events match
             if (lstEvents.Items.Count == 0)
             {
                 lstEvents.Items.Add(
                     "No events found for the selected category and date.");
             }
 
+            // Generate recommendations after two searches
             if (totalSearches >= 2)
             {
                 ShowRecommendations();
-
             }
             else
             {
                 lstRecommendations.Items.Clear();
+
                 lstRecommendations.Items.Add(
-                    "Search for more events to receive recommendations.");
+                    "Search again to receive recommendations.");
             }
         }
 
-
+        // Process events in the priority queue
         private void ProcessPriorityEvents()
         {
             while (priorityEventQueue.Count > 0)
             {
-                EventItem priorityEvent = priorityEventQueue.Dequeue();
+                EventItem priorityEvent =
+                    priorityEventQueue.Dequeue();
 
                 System.Diagnostics.Debug.WriteLine(
                     "Priority event: " + priorityEvent.Title);
             }
         }
 
-
+        // Generate recommendations based on search preferences
         private void ShowRecommendations()
         {
             lstRecommendations.Items.Clear();
@@ -212,13 +232,15 @@ namespace MunicipalServicesApp
             if (searchPreferences.Count == 0)
             {
                 lstRecommendations.Items.Add(
-                    "Search for events to receive recommendations.");
+                    "Select an event category to receive recommendations.");
+
                 return;
             }
 
             string preferredCategory = null;
             int highestSearchCount = 0;
 
+            // Find the most frequently searched category
             foreach (KeyValuePair<string, int> preference in searchPreferences)
             {
                 if (preference.Value > highestSearchCount)
@@ -228,25 +250,24 @@ namespace MunicipalServicesApp
                 }
             }
 
+            // Display events from the preferred category
             if (preferredCategory != null &&
                 eventsByCategory.ContainsKey(preferredCategory))
             {
                 foreach (EventItem eventItem in eventsByCategory[preferredCategory])
                 {
-                    if (eventItem.EventDate.Date >= DateTime.Today)
-                    {
-                        lstRecommendations.Items.Add(eventItem);
-                    }
+                    lstRecommendations.Items.Add(eventItem);
                 }
             }
 
             if (lstRecommendations.Items.Count == 0)
             {
                 lstRecommendations.Items.Add(
-                    "No upcoming recommendations are available.");
+                    "No recommendations are available.");
             }
         }
 
+        // Add an event to the relevant data structures
         private void AddEvent(EventItem eventItem)
         {
             DateTime date = eventItem.EventDate.Date;
@@ -260,7 +281,9 @@ namespace MunicipalServicesApp
 
             if (!eventsByCategory.ContainsKey(eventItem.Category))
             {
-                eventsByCategory.Add(eventItem.Category, new List<EventItem>());
+                eventsByCategory.Add(
+                    eventItem.Category,
+                    new List<EventItem>());
             }
 
             eventsByCategory[eventItem.Category].Add(eventItem);
@@ -268,6 +291,7 @@ namespace MunicipalServicesApp
             eventCategories.Add(eventItem.Category);
         }
 
+        // Display all sample events
         private void DisplayAllEvents()
         {
             lstEvents.Items.Clear();
@@ -281,9 +305,43 @@ namespace MunicipalServicesApp
             }
         }
 
+        // Search button event
         private void btnSearch_Click(object sender, EventArgs e)
         {
             SearchEvents();
+        }
+
+        // Category dropdown event
+        private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Category selection is handled when Search is clicked.
+        }
+
+        // Back button returns to the existing main menu
+        private void button1_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form is Form1)
+                {
+                    form.Show();
+                    break;
+                }
+            }
+
+            this.Close();
+        }
+
+        // Designer event handlers
+        private void label3_Click(object sender, EventArgs e)
+        {
+            // No action required.
+        }
+
+        private void lstRecommendations_SelectedIndexChanged(
+            object sender, EventArgs e)
+        {
+            // No action required.
         }
     }
 }

@@ -8,7 +8,14 @@ namespace MunicipalServicesApp
         public Form1()
         {
             InitializeComponent();
+
+
+            btnServiceStatus.Click += btnServiceRequestStatus_Click;
+            btnServiceStatus.Enabled = true;
         }
+
+
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -29,5 +36,19 @@ namespace MunicipalServicesApp
             LocalEventsForm eventsForm = new LocalEventsForm();
             eventsForm.Show();
         }
+
+        private void btnServiceRequestStatus_Click(object sender, EventArgs e)
+        {
+            ServiceRequestStatusForm statusForm =
+                new ServiceRequestStatusForm();
+
+            statusForm.Show();
+            this.Hide();
+        }
+        private void lblTitle_Click(object sender, EventArgs e)
+        {
+            // No action needed when the title is clicked
+        }
+
     }
 }
