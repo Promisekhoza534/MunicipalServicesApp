@@ -1,12 +1,13 @@
-﻿# MUNICIPAL SERVICES APPLICATION
+# MUNICIPAL SERVICES APPLICATION
 
- 
-Module: Advanced Application Development (AAPD7112/w)  
-Programming Language: C#  
-Development Environment: Microsoft Visual Studio  
-Application Type: Windows Forms Desktop Application  
+**Student Name:** Promise Karabo Khoza  
+**Student Number:** ST10530868  
+**Module:** Advanced Application Development (AAPD7112/w)  
+**Programming Language:** C#  
+**Development Environment:** Microsoft Visual Studio  
+**Application Type:** Windows Forms Desktop Application  
 
-
+---
 
 # 1. Project Overview
 
@@ -24,14 +25,14 @@ The application was developed in stages, with each section contributing to the o
 
 The following technologies and tools were used:
 
- Technology - Purpose 
-
- C# - Main programming language 
- Windows Forms - Development of the desktop user interface 
- Microsoft Visual Studio - Development and debugging environment 
- .NET Framework - Application development platform 
- Git - Source code version control 
- GitHub - Online source code repository 
+| Technology | Purpose |
+|---|---|
+| C# | Main programming language |
+| Windows Forms | Development of the desktop user interface |
+| Microsoft Visual Studio | Development and debugging environment |
+| .NET Framework | Application development platform |
+| Git | Source code version control |
+| GitHub | Online source code repository |
 
 # 3. Application Features
 
@@ -76,7 +77,6 @@ Main functionality:
 The application contains sample events such as Community Clean-Up, Municipal Health Awareness Day, Small Business Information Session, Recycling Awareness Campaign and Community Safety Meeting.
 
 
-
 ## 3.3 Service Request Status
 
 The Service Request Status section allows users to search for municipal service requests using unique reference numbers.
@@ -94,13 +94,14 @@ Each service request contains:
 
 The application includes the following sample requests:
 
- Request ID - Request - Status - Priority 
-
- SR1001 - Water Leak - Submitted - High 
- SR1002 - Street Light Repair - In Progress - Medium 
- SR1003 - Road Damage - Completed - Low 
+| Request ID | Request | Status | Priority |
+|---|---|---|---|
+| SR1001 | Water Leak | Submitted | High |
+| SR1002 | Street Light Repair | In Progress | Medium |
+| SR1003 | Road Damage | Completed | Low |
 
 Users can search for a specific service request using its unique reference number. The application uses a Red-Black Tree to perform the actual request search. Users can also display all available requests, with a Max Heap used to arrange them according to priority, placing high-priority requests before medium- and low-priority requests.
+
 
 
 # 4. Data Structures and Algorithms
@@ -137,11 +138,11 @@ The Max Heap organises service requests according to priority.
 
 The application assigns the following numerical values:
 
- Priority | Value 
-
- High - 3 
- Medium - 2 
- Low - 1 
+| Priority | Value |
+|---|---:|
+| High | 3 |
+| Medium | 2 |
+| Low | 1 |
 
 The highest-priority request is removed first and displayed before lower-priority requests.
 
@@ -187,21 +188,21 @@ The project contains separate classes for the main application forms, service re
 
 Important files include:
 
- File | Purpose 
-
- Form1.cs | Main application menu 
- ReportIssuesForm.cs | Report Issues functionality 
- LocalEventsForm.cs | Local Events and Announcements functionality 
- EventItem.cs | Event information model 
- PriorityEventQueue.cs | Priority queue implementation for events 
- ServiceRequest.cs | Service request model 
- ServiceRequestStatusForm.cs | Service Request Status interface 
- ServiceRequestBinarySearchTree.cs | Binary Search Tree implementation 
- ServiceRequestAVLTree.cs | AVL Tree implementation 
- ServiceRequestRedBlackTree.cs | Red-Black Tree implementation 
- ServiceRequestMaxHeap.cs | Max Heap implementation 
- ServiceRequestGraph.cs | Graph, BFS and DFS implementation 
- MunicipalNetworkMST.cs | Prim's Minimum Spanning Tree implementation 
+| File | Purpose |
+|---|---|
+| Form1.cs | Main application menu |
+| ReportIssuesForm.cs | Report Issues functionality |
+| LocalEventsForm.cs | Local Events and Announcements functionality |
+| EventItem.cs | Event information model |
+| PriorityEventQueue.cs | Priority queue implementation for events |
+| ServiceRequest.cs | Service request model |
+| ServiceRequestStatusForm.cs | Service Request Status interface |
+| ServiceRequestBinarySearchTree.cs | Binary Search Tree implementation |
+| ServiceRequestAVLTree.cs | AVL Tree implementation |
+| ServiceRequestRedBlackTree.cs | Red-Black Tree implementation |
+| ServiceRequestMaxHeap.cs | Max Heap implementation |
+| ServiceRequestGraph.cs | Graph, BFS and DFS implementation |
+| MunicipalNetworkMST.cs | Prim's Minimum Spanning Tree implementation |
 
 
 
